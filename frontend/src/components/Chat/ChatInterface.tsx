@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, AlertCircle, X } from 'lucide-react';
 import { ChatMessage } from './ChatMessage';
 import { ImageUpload } from './ImageUpload';
 import { ChatThread } from '../../types';
@@ -8,12 +8,16 @@ interface ChatInterfaceProps {
   thread: ChatThread | null;
   onSendMessage: (content: string, image?: string) => void;
   loading: boolean;
+  error?: string | null;
+  onClearError?: () => void;
 }
 
 export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   thread,
   onSendMessage,
-  loading
+  loading,
+  error,
+  onClearError
 }) => {
   const [message, setMessage] = useState('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -54,6 +58,33 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
   return (
     <div className="flex-1 flex flex-col bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
+      {/* Error Banner */}
+      {error && (
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 border-b border-yellow-200 dark:border-yellow-700 px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <AlertCircle className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+              <div>
+                <p className="text-yellow-800 dark:text-yellow-200 text-sm font-medium">
+                  Connection Issue
+                </p>
+                <p className="text-yellow-700 dark:text-yellow-300 text-sm">
+                  {error}
+                </p>
+              </div>
+            </div>
+            {onClearError && (
+              <button
+                onClick={onClearError}
+                className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-200"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         {thread.messages.map((msg) => (
@@ -100,6 +131,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Ask about nutrition or describe what you'd like to analyze..."
               className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
+              disabled={loading}
             />
             <button
               type="submit"

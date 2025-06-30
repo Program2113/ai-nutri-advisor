@@ -15,7 +15,9 @@ export const MainApp: React.FC = () => {
     createThread,
     sendMessage,
     deleteThread,
-    loading
+    loading,
+    error,
+    clearError
   } = useChat();
 
   return (
@@ -35,6 +37,8 @@ export const MainApp: React.FC = () => {
           thread={activeThread || null}
           onSendMessage={sendMessage}
           loading={loading}
+          error={error}
+          onClearError={clearError}
         />
       </div>
 
