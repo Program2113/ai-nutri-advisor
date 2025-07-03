@@ -1,0 +1,46 @@
+Step 1: Extracting ingredients from image...
+
+Successfully extracted 18 ingredients.
+
+Step 2: Analyzing each ingredient...
+  - Analyzing: Enriched unbleached flour
+  - Analyzing: wheat flour
+  - Analyzing: malted barley flour
+  - Analyzing: ascorbic acid
+  - Analyzing: niacin
+  - Analyzing: reduced iron
+  - Analyzing: thiamin mononitrate
+  - Analyzing: riboflavin
+  - Analyzing: folic acid
+  - Analyzing: sugar
+  - Analyzing: degermed yellow cornmeal
+  - Analyzing: salt
+  - Analyzing: leavening
+  - Analyzing: baking soda
+  - Analyzing: sodium acid pyrophosphate
+  - Analyzing: soybean oil
+  - Analyzing: honey powder
+  - Analyzing: natural flavor
+
+Step 3: Generating final summary and score...
+
+
+--- FOOD PRODUCT ANALYSIS COMPLETE ---
+{
+    "eatability_score": 65,
+    "score_reasoning": "The product contains a mix of generally recognized as safe (GRAS) ingredients and some that are classified as mixed/controversial due to potential health concerns. The presence of nutritional additives like vitamins and minerals is beneficial, although the incorporation of refined flours and added sugars and fats reduces the overall healthiness. The balance of beneficial ingredients versus controversial ones suggests a moderate eatability score.",
+    "positives": [
+        "Presence of essential vitamins and minerals such as vitamin C, niacin, thiamin, riboflavin, and folic acid.",
+        "Use of ingredients with beneficial properties such as malted barley flour and ascorbic acid.",
+        "Inclusion of leavening agents and fiber-rich ingredients like degermed yellow cornmeal and malted barley flour."
+    ],
+    "potential_issues": [
+        "Use of refined flours that can lead to higher glycemic indices and lower fiber content.",
+        "Inclusion of added sugars which are linked to metabolic disorders if consumed excessively.",
+        "High omega-6 fatty acid content from soybean oil, which can exacerbate inflammation in an imbalanced diet.",
+        "Use of natural flavors with unclear composition and potential allergen presence.",
+        "Excessive salt intake can contribute to hypertension and cardiovascular disease."
+    ],
+    "overall_summary": "The product contains a variety of ingredients that provide essential nutrients, thanks to fortification and natural sources like honey powder. However, the primary use of enriched and bleached flours, as well as added sugars and fats, tempers its health benefits by raising concerns tied to processed ingredients and possible inflammation. It is a suitable choice for occasional consumption within a balanced diet but not as a primary dietary staple. Efforts to reduce added sugars and refine grains would significantly enhance its eatability."
+}
+------------------------------------
